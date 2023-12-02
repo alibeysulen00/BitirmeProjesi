@@ -1,9 +1,13 @@
 package com.example.bitirmeprojesi.ui.viewmodel;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.bitirmeprojesi.data.entity.Sepet;
 import com.example.bitirmeprojesi.data.entity.Yemekler;
 import com.example.bitirmeprojesi.data.repo.UrunlerDaoRepository;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -12,6 +16,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class DetayViewModel extends ViewModel {
     public UrunlerDaoRepository udao;
+    public MutableLiveData<List<Sepet>> sepetListesiLiveData = new MutableLiveData<>();
+
 
     @Inject
     public DetayViewModel(UrunlerDaoRepository udao){
@@ -21,6 +27,10 @@ public class DetayViewModel extends ViewModel {
 
 
     public void yemekKaydet(String yemek_adi, String yemek_resim_adi, int yemek_fiyat, int yemek_siparis_adet, String kullanici_adi){
+
+
+
+
         udao.yemekleriKaydet(yemek_adi,yemek_resim_adi,yemek_fiyat,yemek_siparis_adet,kullanici_adi);
     }
 

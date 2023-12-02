@@ -59,12 +59,9 @@ public class SepetAdapter extends RecyclerView.Adapter<SepetAdapter.CardTasarimT
             viewModel.sepettenYemekSil(sepet.getSepet_yemek_id(), "alibeysulen");
             sepetYemeklerListesi.remove(sepet);
             notifyDataSetChanged(); // RecyclerView'yi güncelle
-            viewModel.sifirla();
-            /*viewModel.eklemeYapildi(-sepet.getYemek_fiyat() * sepet.getYemek_siparis_adet());
-            int toplamFiyat = viewModel.toplamFiyatiHesapla(sepetYemeklerListesi);
+            viewModel.eklemeYapildi(-sepet.getYemek_fiyat() * sepet.getYemek_siparis_adet());
             t.sepetToplam.setText(String.valueOf(sepet.getYemek_fiyat() * sepet.getYemek_siparis_adet()));
-            viewModel.getGenelToplam().setValue(toplamFiyat);
-           */
+            viewModel.sifirla();
         });
 
         viewModel.eklemeYapildi(sepet.getYemek_fiyat() * sepet.getYemek_siparis_adet());

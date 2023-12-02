@@ -2,6 +2,7 @@ package com.example.bitirmeprojesi.data.repo;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.bitirmeprojesi.data.entity.Sepet;
@@ -102,7 +103,10 @@ public class UrunlerDaoRepository {
 
             }
         });
+
     }
+   
+
 
     public void sepettenYemekSil(int sepet_yemek_id, String kullanici_adi){
         udao.sepettenYemekSil(sepet_yemek_id, kullanici_adi).enqueue(new Callback<SepetCevap>() {

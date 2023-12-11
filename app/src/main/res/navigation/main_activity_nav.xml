@@ -20,6 +20,9 @@
             android:name="kullaniciAdi"
             app:argType="string"
             android:defaultValue="Oturum Açın" />
+        <action
+            android:id="@+id/favorilerGecis"
+            app:destination="@id/favorilerFragment" />
     </fragment>
     <fragment
         android:id="@+id/detayFragment"
@@ -42,4 +45,9 @@
         android:name="kullaniciAdi"
         app:argType="string"
         android:defaultValue="Oturum Açılmadı" />
+    <fragment
+        android:id="@+id/favorilerFragment"
+        android:name="com.example.bitirmeprojesi.ui.fragment.FavorilerFragment"
+        android:label="fragment_favoriler"
+        tools:layout="@layout/fragment_favoriler" />
 </navigation>

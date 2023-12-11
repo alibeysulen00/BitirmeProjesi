@@ -7,6 +7,7 @@ import com.example.bitirmeprojesi.data.entity.Sepet;
 import com.example.bitirmeprojesi.data.entity.Yemekler;
 import com.example.bitirmeprojesi.data.repo.UrunlerDaoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,7 +18,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class AnasayfaViewModel extends ViewModel {
     private final UrunlerDaoRepository udao;
     public MutableLiveData<List<Yemekler>> yemeklerListesi;
+
     public MutableLiveData<List<Sepet>> sepetlerListesi;
+
 
     @Inject
     public AnasayfaViewModel(UrunlerDaoRepository udao) {
@@ -27,9 +30,16 @@ public class AnasayfaViewModel extends ViewModel {
         yemekleriYukle();
     }
 
+
+
+
     public void yemekleriYukle() {
         udao.yemekleriYukle();
     }
+
+
+
+
 
     
 }

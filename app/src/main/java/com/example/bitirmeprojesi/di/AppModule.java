@@ -25,4 +25,6 @@ public class AppModule {
     public UrunlerDao providerUrunlerDao(){
         return ApiUtils.getUrunlerDao();
     }
+
+
 }

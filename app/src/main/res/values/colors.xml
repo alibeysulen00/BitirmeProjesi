@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="snackBarTextColor">#FF6D00</color>
+
+    <color name="searchViewRenk"> #646464</color>
+    <color name="base">#F0F0F0</color>
+    <color name="pumpkin">#F27A1A</color>
+    <color name="light_yazirenk">#BCBCBC</color>
+    <color name="yazirenk">#535252</color>
+
+
 </resources>

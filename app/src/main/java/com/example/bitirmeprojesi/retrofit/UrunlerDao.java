@@ -9,6 +9,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface UrunlerDao {
 
@@ -32,5 +33,11 @@ public interface UrunlerDao {
     @POST("sepettenYemekSil.php")
     @FormUrlEncoded
     Call<SepetCevap> sepettenYemekSil(@Field("sepet_yemek_id") int sepet_yemek_id, @Field("kullanici_adi") String kullanici_adi);
+
+
+
+
+
+
 
 }

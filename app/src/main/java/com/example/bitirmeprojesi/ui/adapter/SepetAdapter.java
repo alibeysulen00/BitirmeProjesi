@@ -72,7 +72,11 @@ public class SepetAdapter extends RecyclerView.Adapter<SepetAdapter.CardTasarimT
 
     @Override
     public int getItemCount() {
-        return sepetYemeklerListesi.size();
+        if(sepetYemeklerListesi == null)
+            return 0;
+        else
+
+            return sepetYemeklerListesi.size();
     }
 
     public void resimGoster(String resimAdi, ImageView imageView) {

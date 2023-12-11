@@ -1,6 +1,9 @@
 package com.example.bitirmeprojesi.ui.fragment;
 
+import static android.graphics.Color.rgb;
+
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.bitirmeprojesi.R;
@@ -20,6 +24,7 @@ import com.example.bitirmeprojesi.data.entity.Yemekler;
 import com.example.bitirmeprojesi.databinding.FragmentDetayBinding;
 import com.example.bitirmeprojesi.ui.adapter.SepetAdapter;
 import com.example.bitirmeprojesi.ui.viewmodel.DetayViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -84,6 +89,8 @@ public class DetayFragment extends Fragment {
         }
         });
 
+
+
         binding.detaySepeteEkleButton.setOnClickListener(v -> {
             //yemekadi, yemekresimadi, yemekfiyat, sipariadet,kulaniciadi
             String yemekAdi = gelenYemek.getYemek_adi();
@@ -92,6 +99,11 @@ public class DetayFragment extends Fragment {
             int siparisAdeti = Integer.parseInt(binding.textAdet.getText().toString());
             String kullaniciAdi = "alibeysulen";
             viewModel.yemekKaydet(yemekAdi,yemekResimAdi,yemekFiyati,siparisAdeti,kullaniciAdi);
+            Snackbar.make(v,yemekAdi+" sepete eklendi!", 500)
+                    .setBackgroundTint(Color.WHITE)
+                    .setTextColor(rgb(245, 124, 0))
+                    .setActionTextColor(rgb(245, 124, 0))
+                    .show();
 
 
 

@@ -1,18 +1,12 @@
 package com.example.bitirmeprojesi;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.bitirmeprojesi.ui.fragment.SepetFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -40,11 +34,18 @@ public class MainActivity extends AppCompatActivity {
             else if(item.getItemId() == R.id.sepetFragment){
                 Navigation.findNavController(this, R.id.fragmentContainerView).navigate(R.id.sepetFragment);
                 return true;
-            }
-            else{
+            } else if (item.getItemId() == R.id.favorilerFragment) {
+                Navigation.findNavController(this, R.id.fragmentContainerView).navigate(R.id.favorilerFragment);
+                return true;
+
+            } else{
                 return false;
             }
         });
+
+
+
+
 
 
     }

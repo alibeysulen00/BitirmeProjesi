@@ -34,7 +34,7 @@ public class AnasayfaFragment extends Fragment {
 
  private FragmentAnasayfaBinding binding;
  private AnasayfaViewModel viewModel;
- private SepetViewModel sepetViewModel;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,10 +59,6 @@ public class AnasayfaFragment extends Fragment {
 
 
 
-       /* binding.sepetButton.setOnClickListener(v -> {
-            *//*sepetViewModel.sepetGetir("alibeysulen");*//*
-            Navigation.findNavController(v).navigate(R.id.sepetGecis);
-        });*/
 
 
 

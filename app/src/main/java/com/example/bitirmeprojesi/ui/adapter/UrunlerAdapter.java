@@ -1,8 +1,10 @@
 package com.example.bitirmeprojesi.ui.adapter;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -14,10 +16,9 @@ import com.bumptech.glide.Glide;
 import com.example.bitirmeprojesi.R;
 import com.example.bitirmeprojesi.data.entity.Yemekler;
 import com.example.bitirmeprojesi.databinding.AnasayfaYemeklerCardBinding;
-import com.example.bitirmeprojesi.ui.FavoriManager;
-import com.example.bitirmeprojesi.ui.fragment.AnasayfaFragment;
 import com.example.bitirmeprojesi.ui.fragment.AnasayfaFragmentDirections;
 import com.example.bitirmeprojesi.ui.viewmodel.AnasayfaViewModel;
+import com.example.bitirmeprojesi.ui.viewmodel.FavorilerViewModel;
 
 import java.util.List;
 
@@ -25,13 +26,13 @@ public class UrunlerAdapter extends RecyclerView.Adapter<UrunlerAdapter.CardTasa
     private List<Yemekler> yemeklerListesi;
     private Context mContext;
     private AnasayfaViewModel viewModel;
-    private FavoriManager favoriManager;
 
-    public UrunlerAdapter(List<Yemekler> yemeklerListesi, Context mContext, AnasayfaViewModel viewModel) {
+
+    public UrunlerAdapter(List<Yemekler> yemeklerListesi, Context mContext,AnasayfaViewModel viewModel) {
         this.yemeklerListesi = yemeklerListesi;
         this.mContext = mContext;
         this.viewModel = viewModel;
-        this.favoriManager = FavoriManager.getInstance();
+
     }
 
 
@@ -62,12 +63,27 @@ public class UrunlerAdapter extends RecyclerView.Adapter<UrunlerAdapter.CardTasa
         t.yemekAdi.setText(yemek.getYemek_adi());
         t.yemekFiyat.setText(String.valueOf("₺ "+yemek.getYemek_fiyat()));
 
-        t.likeImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleFavorite(yemek,t.likeImageView);
+
+
+
+        t.likeImageView.setOnClickListener(v -> {
+
+            boolean favori = true;
+            if(favori){
+                t.likeImageView.setImageResource(R.drawable.favoriteok);
+                favori = false;
             }
+            else{
+                t.likeImageView.setImageResource(R.drawable.nonefavorite);
+                favori = true;
+            }
+
+            FavorilerViewModel.favoriyeEkle(yemek.getYemek_fiyat(), yemek.getYemek_adi(), yemek.getYemek_resim_adi());
+
+
         });
+
+
 
 
 
@@ -97,18 +113,7 @@ public class UrunlerAdapter extends RecyclerView.Adapter<UrunlerAdapter.CardTasa
         Glide.with(mContext).load(url).override(300, 300).into(imageView);
     }
 
-    private void toggleFavorite(Yemekler yemek, ImageView likeImageView) {
-        favoriManager.toggleFavori(yemek);
-        updateFavoriteIcon(yemek, likeImageView);
-    }
 
-    private void updateFavoriteIcon(Yemekler yemek, ImageView likeImageView) {
-        if (favoriManager.isFavori(yemek)) {
-            likeImageView.setImageResource(R.drawable.favoriteok);
-        } else {
-            likeImageView.setImageResource(R.drawable.nonefavorite);
-        }
-    }
 
 
 
